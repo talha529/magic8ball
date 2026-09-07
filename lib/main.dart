@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'dart:math';
 void main() {
   runApp(const BallPage());
 }
@@ -33,12 +33,27 @@ class Ball extends StatefulWidget {
 }
 
 class _BallState extends State<Ball> {
+  var ballImg=1;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: Image.asset("images/ball1.png"),
+        body: Center(child:
+          GestureDetector(
+            onTap:() {
+              setState(() {
+                ballImg = Random().nextInt(5)+1;
+                print("hello");
+              });
+
+            },
+
+            child: Image.asset("images/ball$ballImg.png")
+          ),
+        ),
+
       ),
     );
   }
